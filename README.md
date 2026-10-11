@@ -20,7 +20,7 @@ This model was trained and evaluated using chest radiograph images curated from 
 
 1. **[Chest X-Ray Dataset (4 Categories)](https://www.kaggle.com/datasets/pritpal2873/chest-x-ray-dataset-4-categories)**  
 
-2. **[Tuberculosis (TB) Chest X-ray Dataset](https://www.kaggle.com/datasets/tawsifurrahman/tuberculosis-tb-chest-xray-dataset)
+2. **[Tuberculosis (TB) Chest X-ray Dataset](https://www.kaggle.com/datasets/tawsifurrahman/tuberculosis-tb-chest-xray-dataset)**
 
 ---
 ## 📁 Project Structure
@@ -84,20 +84,23 @@ To compute classification metrics and generate the ROC curve on the unseen test 
 ```bash
 python evaluate.py
 ```
-Outputs include:
-=============================================
-Classification Report
-=============================================
-Class        Precision  Recall  F1-Score 
-Normal          0.85     0.90     0.88  
-TB              0.90     0.84     0.87
+#### 📊 Classification Report
 
-=============================================
-Confusion Matrix
-=============================================
-[[TN=190, FP=20],
- [FN=33, TP=177]]
-- ROC Curve saved to `roc_curve_standard.png`
+| Class | Precision | Recall | F1-Score |
+| :--- | :---: | :---: | :---: |
+| **Normal** | 0.85 | 0.90 | 0.88 |
+| **Tuberculosis (TB)** | 0.90 | 0.84 | 0.87 |
+
+**Overall Accuracy:** **87.38%**
+
+#### 🧩 Confusion Matrix
+
+| Actual \ Predicted | Predicted Normal | Predicted TB |
+| :--- | :---: | :---: |
+| **Actual Normal** | **190** (True Negative) | **20** (False Positive) |
+| **Actual TB** | **33** (False Negative) | **177** (True Positive) |
+
+- ROC Curve saved and visualized: `roc_curve_standard.png`
 
 ---
 
