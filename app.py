@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, jsonify, send_file
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
@@ -10,7 +10,7 @@ MODEL_PATH = os.path.join(BASE_DIR, "tb_model.keras")
 UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-app = Flask(__name__, template_folder=BASE_DIR)
+app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 # Load trained model once at startup
@@ -21,7 +21,7 @@ IMG_SIZE = (150, 150)
 # ── Routes ───────────────────────────────────────────────
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return send_file(os.path.join(BASE_DIR, "index.html"))
 
 
 @app.route("/predict", methods=["POST"])
