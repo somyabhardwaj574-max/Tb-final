@@ -25,61 +25,54 @@ Tuberculosis remains one of the world's leading infectious causes of death. Earl
 
 ---
 
-## 📊 Datasets Used
+## 📊 Dataset & Splitting
 
-This model was trained and evaluated using chest radiograph images curated from the following Kaggle datasets:
+The balanced dataset contains a total of **2,800 chest radiographs** (1,400 Normal and 1,400 TB-positive).
 
-1. **[Chest X-Ray Dataset (4 Categories)](https://www.kaggle.com/datasets/pritpal2873/chest-x-ray-dataset-4-categories)**  
+The dataset is partitioned into:
+- **Training Set (70%):** 1,960 images
+- **Validation Set (15%):** 420 images
+- **Held-out Test Set (15%):** 420 images
 
+The project utilizes curated chest radiographs sourced from two benchmark datasets:
+1. **[Chest X-Ray Dataset (4 Categories)](https://www.kaggle.com/datasets/pritpal2873/chest-x-ray-dataset-4-categories)**
 2. **[Tuberculosis (TB) Chest X-ray Dataset](https://www.kaggle.com/datasets/tawsifurrahman/tuberculosis-tb-chest-xray-dataset)**
 
 ---
-## 📁 Project Structure
 
-```text
-Tb/
-├── dataset/                    # Dataset directory
-│   ├── Normal/                 # Normal chest X-ray images
-│   └── TB/                     # Tuberculosis-positive X-ray images
-├── index.html                  # Frontend user interface
-├── app.py                      # Flask web application & prediction API
-├── train_model.py              # Model training script (VGG16 + Data Augmentation)
-├── evaluate.py                 # Evaluation metrics & ROC curve generator
-├── tb_model.keras              # Trained model file
-├── roc_curve_standard.png      # Generated ROC evaluation curve
-├── requirements.txt            # Python dependencies
-└── README.md                   # Project documentation
+## 🛠️ Tech Stack
 
-```
+- **Programming Language**: Python 3.10+
+- **Deep Learning Framework**: TensorFlow / Keras (VGG16 Transfer Learning)
+- **Backend Web Framework**: Flask
+- **Frontend**: HTML5, CSS3, JavaScript (interactive image preview & real-time progress bars)
+- **Image Processing**: Pillow (PIL), NumPy
 
 ---
 
-## 🚀 Usage
-
-### 1. Run the Web Application
-Start the Flask development server:
+## 🚀 How to Run the Project
+1. Install Dependencies
 ```bash
-python app.py
+pip install -r requirements.txt
 ```
-Open your web browser and navigate to:
-```
-http://127.0.0.1:5000
-```
-- Click to upload any chest X-ray image (`.png`).
-- Click **Predict** to view the confidence scores (`Normal %` vs `Tuberculosis %`) and diagnosis.
-
-### 2. Train the Model (First Time)
-To retrain the model from scratch on the dataset:
+2. Train the Model (Optional - pretrained `tb_model.keras` already included)
 ```bash
 python train_model.py
 ```
-This saves the trained weights to `tb_model.keras`.
-
-### 3. Evaluate the Model
-To compute classification metrics and generate the ROC curve on the unseen test split:
+3. Check Model Accuracy & Evaluation
 ```bash
-python evaluate.py
+python calculate_accuracy.py
 ```
+4. Launch the Web Application
+```bash
+python app.py
+```
+Open your browser and navigate to:
+```text
+http://127.0.0.1:5000
+
+```
+
 #### 📊 Classification Report
 
 | Class | Precision | Recall | F1-Score |
