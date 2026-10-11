@@ -7,8 +7,7 @@ An end-to-end deep learning system and web application designed to detect Tuberc
 ## 📌 Project Overview
 
 Tuberculosis remains one of the world's leading infectious causes of death. Early diagnosis via chest radiography is crucial for effective treatment. This project provides:
-- A fine-tuned Deep Convolutional Neural Network (CNN) based on **VGG16**.
-- A balanced training pipeline with data augmentation and regularization.
+- A fine-tuned on Neural Network  based on **VGG16**.
 - An interactive, responsive **Flask web application** allowing clinicians or users to upload X-ray images and receive instant probability breakdowns and diagnostic verdicts.
 - Evaluation scripts computing Accuracy, Precision, Recall, F1-Score, Confusion Matrix, and ROC Curve.
 
@@ -38,23 +37,8 @@ Tb/
 ├── roc_curve_standard.png      # Generated ROC evaluation curve
 ├── requirements.txt            # Python dependencies
 └── README.md                   # Project documentation
+
 ```
-
----
-
-## 🧠 Model Architecture & Methodology
-
-- **Base Model**: Pretrained **VGG16** (ImageNet weights, frozen feature extractor)
-- **Top Layers**:
-  - `GlobalAveragePooling2D`
-  - `Dense(32, activation='relu', L2 Regularization=0.02)`
-  - `Dropout(0.40)`
-  - `Dense(1, activation='sigmoid')`
-- **Data Augmentation**: Rotation (15°), horizontal flips, width/height shifts, zoom.
-- **Optimization & Loss**:
-  - Optimizer: Adam (Learning Rate = `1.5e-4`)
-  - Loss Function: Binary Crossentropy with label smoothing (`0.04`) for calibrated probabilities.
-- **Data Split**: Stratified 70% Training / 15% Validation / 15% Unseen Test.
 
 ---
 
@@ -72,7 +56,7 @@ http://127.0.0.1:5000
 - Click to upload any chest X-ray image (`.png`).
 - Click **Predict** to view the confidence scores (`Normal %` vs `Tuberculosis %`) and diagnosis.
 
-### 2. Train the Model (Optional)
+### 2. Train the Model (First Time)
 To retrain the model from scratch on the dataset:
 ```bash
 python train_model.py
