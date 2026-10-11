@@ -19,13 +19,10 @@ Tuberculosis remains one of the world's leading infectious causes of death. Earl
 This model was trained and evaluated using chest radiograph images curated from the following Kaggle datasets:
 
 1. **[Chest X-Ray Dataset (4 Categories)](https://www.kaggle.com/datasets/pritpal2873/chest-x-ray-dataset-4-categories)**  
-   *Curated by Pritpal Singh on Kaggle* — Contains categorized chest X-ray images used for normal and respiratory condition benchmarks.
 
-2. **[Tuberculosis (TB) Chest X-ray Dataset](https://www.kaggle.com/datasets/tawsifurrahman/tuberculosis-tb-chest-xray-dataset)**  
-   *Curated by Tawsifur Rahman et al. on Kaggle* — A dedicated collection of verified Tuberculosis-positive and Normal chest X-ray images.
+2. **[Tuberculosis (TB) Chest X-ray Dataset](https://www.kaggle.com/datasets/tawsifurrahman/tuberculosis-tb-chest-xray-dataset)
 
 ---
-
 ## 📁 Project Structure
 
 ```text
@@ -61,32 +58,6 @@ Tb/
 
 ---
 
-## ⚙️ Installation & Setup
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/somyabhardwaj574-max/pe2026-tb-detection-system.git
-cd pe2026-tb-detection-system
-```
-
-### 2. Create and Activate a Virtual Environment
-```bash
-# Windows
-python -m venv venv
-venv\Scripts\activate
-
-# Linux / macOS
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### 3. Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-
----
-
 ## 🚀 Usage
 
 ### 1. Run the Web Application
@@ -98,7 +69,7 @@ Open your web browser and navigate to:
 ```
 http://127.0.0.1:5000
 ```
-- Click to upload any chest X-ray image (`.png`, `.jpg`, `.jpeg`).
+- Click to upload any chest X-ray image (`.png`).
 - Click **Predict** to view the confidence scores (`Normal %` vs `Tuberculosis %`) and diagnosis.
 
 ### 2. Train the Model (Optional)
@@ -114,20 +85,19 @@ To compute classification metrics and generate the ROC curve on the unseen test 
 python evaluate.py
 ```
 Outputs include:
-- Test Accuracy, Precision, Recall, and F1-Score
-- Confusion Matrix
+=============================================
+Classification Report
+=============================================
+Class        Precision  Recall  F1-Score 
+Normal          0.85     0.90     0.88  
+TB              0.90     0.84     0.87
+
+=============================================
+Confusion Matrix
+=============================================
+[[TN=190, FP=20],
+ [FN=33, TP=177]]
 - ROC Curve saved to `roc_curve_standard.png`
-
----
-
-## 🌐 Deployment
-
-The web app is configured for local execution as well as cloud deployment platforms like [Render](https://render.com/):
-- Dynamically binds to the assigned `$PORT` environment variable.
-- Production WSGI deployment supported with `gunicorn`:
-  ```bash
-  gunicorn app:app
-  ```
 
 ---
 
