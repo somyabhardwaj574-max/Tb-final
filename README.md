@@ -13,6 +13,18 @@ Tuberculosis remains one of the world's leading infectious causes of death. Earl
 
 ---
 
+## 👥 Team Members
+
+| Name | Registration Number |
+| :--- | :---: |
+| **Ishan Choudhary** | 25BCE10753 |
+| **Khush Gupta** | 25BCE10038 |
+| **Vidit Choudhary** | 25BCE10749 |
+| **Saransh Mathur** | 25BCE10354 |
+| **Somya Bhardwaj** | 25BCE10409 |
+
+---
+
 ## 📊 Datasets Used
 
 This model was trained and evaluated using chest radiograph images curated from the following Kaggle datasets:
